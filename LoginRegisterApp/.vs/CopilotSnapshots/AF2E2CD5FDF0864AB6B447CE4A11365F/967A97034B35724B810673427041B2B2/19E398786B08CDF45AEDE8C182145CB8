@@ -1,0 +1,201 @@
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Media;
+using LoginRegisterApp.Data;
+using LoginRegisterApp.Models;
+using LoginRegisterApp.Services;
+
+namespace LoginRegisterApp
+{
+    public partial class MainWindow : Window
+    {
+        // Kept so nav handlers and LoadUsers() know who's logged in and what they're allowed to see.
+        private readonly string _username;
+        private readonly string _role;
+        private readonly bool _estValide;
+
+        // LoginWindow calls: new MainWindow(username, role, estValide)
+        public MainWindow(string username, string role, bool estValide)
+        {
+            InitializeComponent();
+
+            _username = username;
+            _role = role;
+            _estValide = estValide;
+
+            WelcomeText.Text = $"Bonjour, {_username} 👋";
+            ConfigureForRole();
+            ConfigureForValidation();
+        }
+
+        // Sets the role badge (color + label) and reveals the admin-only nav
+        // entry. Called once at startup - the role never changes mid-session.
+        private void ConfigureForRole()
+        {
+            bool isAdmin = _role == "Admin";
+            bool isSuperviseurAchat = _role == "SuperviseurAchat";
+
+            RoleBadgeText.Text = _role switch
+            {
+                "Admin" => "Administrateur",
+                "SuperviseurAchat" => "Superviseur d'achat",
+                _ => "Utilisateur",
+            };
+
+            RoleBadge.Background = _role switch
+            {
+                "Admin" => (Brush)FindResource("AccentGoldBrush"),
+                "SuperviseurAchat" => (Brush)FindResource("DangerBrush"),
+                _ => (Brush)FindResource("PrimaryBrush"),
+            };
+
+            // "Gestion des utilisateurs" reste réservé à l'admin - un superviseur
+            // d'achat reçoit des notifications sur les demandes, mais ne gère pas les comptes.
+            NavUsers.Visibility = isAdmin ? Visibility.Visible : Visibility.Collapsed;
+
+            SubtitleText.Text = _role switch
+            {
+                "Admin" => "Vue d'ensemble et gestion des comptes utilisateurs.",
+                "SuperviseurAchat" => "Suivi des demandes d'achat de l'équipe commerciale.",
+                _ => "Voici un aperçu de votre activité aujourd'hui.",
+            };
+        }
+
+        // Non-validated accounts can browse the catalogue but not create purchase
+        // requests (5.1) - the tab is disabled rather than hidden, so the user
+        // still sees it exists and understands why it's greyed out.
+        private void ConfigureForValidation()
+        {
+            if (_estValide) return;
+
+            NavDemandes.IsEnabled = false;
+            NavDemandes.Opacity = 0.4;
+            NavDemandes.ToolTip = "Disponible une fois votre compte validé par un administrateur.";
+        }
+
+        // All four sidebar tabs share this one handler. Each ToggleButton's
+        // Tag-free Name tells us which panel to reveal; everything else gets
+        // hidden and un-checked so only one tab is ever "active" at a time.
+        private void Nav_Click(object sender, RoutedEventArgs e)
+        {
+            var clicked = (ToggleButton)sender;
+
+            foreach (var toggle in new[] { NavDashboard, NavCatalogue, NavDemandes, NavUsers })
+                toggle.IsChecked = toggle == clicked;
+
+            DashboardPanel.Visibility = clicked == NavDashboard ? Visibility.Visible : Visibility.Collapsed;
+            CataloguePanel.Visibility = clicked == NavCatalogue ? Visibility.Visible : Visibility.Collapsed;
+            DemandesPanel.Visibility = clicked == NavDemandes ? Visibility.Visible : Visibility.Collapsed;
+            UsersPanel.Visibility = clicked == NavUsers ? Visibility.Visible : Visibility.Collapsed;
+
+            if (clicked == NavUsers)
+                LoadUsers();
+
+            if (clicked == NavCatalogue)
+                LoadProduits();
+        }
+
+        // Loads the product catalogue into the WrapPanel grid, images included.
+        // Syncs with the external stock database first (architecture, section 3) -
+        // this is the ONLY place new products can appear, never a manual insert button.
+        private void LoadProduits()
+        {
+            try
+            {
+                var nouveaux = ProductSyncService.Synchroniser();
+                ProduitsItemsControl.ItemsSource = ProduitRepository.GetAll();
+
+                if (nouveaux.Count > 0)
+                {
+                    MessageBox.Show($"{nouveaux.Count} nouveau(x) produit(s) synchronisé(s) depuis la base externe.",
+                        "Synchronisation", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Impossible de charger le catalogue : " + ex.Message,
+                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // Opens the admin "create user" form; reloads the grid only if an account was created.
+        private void NewUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            var createWindow = new CreateUserWindow { Owner = this };
+            createWindow.ShowDialog();
+
+            if (createWindow.UserWasCreated)
+                LoadUsers();
+        }
+
+        // Pulls every user into the admin grid via UserRepository.
+        private void LoadUsers()
+        {
+            try
+            {
+                UsersGrid.ItemsSource = UserRepository.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Impossible de charger les utilisateurs : " + ex.Message,
+                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // Fires when the admin clicks the "Actif" switch on a row. The ToggleButton's
+        // IsChecked has already flipped by the time Click fires, so it tells us the
+        // NEW state directly - we just persist it and keep the row's model in sync.
+        private void ActivationToggle_Click(object sender, RoutedEventArgs e)
+        {
+            var toggle = (ToggleButton)sender;
+            var row = (UserRow)toggle.DataContext;
+
+            string newStatut = toggle.IsChecked == true ? "Actif" : "Desactive";
+
+            try
+            {
+                UserRepository.SetStatutActivation(row.Username, newStatut);
+                row.StatutActivation = newStatut; // updates the bound label instantly, no full reload needed
+            }
+            catch (Exception ex)
+            {
+                toggle.IsChecked = !toggle.IsChecked; // revert the visual switch since the DB write failed
+                MessageBox.Show("Impossible de mettre à jour le statut : " + ex.Message,
+                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // Same idea for the "Validé" switch.
+        private void ValidationToggle_Click(object sender, RoutedEventArgs e)
+        {
+            var toggle = (ToggleButton)sender;
+            var row = (UserRow)toggle.DataContext;
+
+            string newStatut = toggle.IsChecked == true ? "Valide" : "NonValide";
+
+            try
+            {
+                UserRepository.SetStatutValidation(row.Username, newStatut);
+                row.StatutValidation = newStatut;
+
+                if (newStatut == "Valide")
+                    NotificationService.NotifierCompteValide(row.UserId);
+            }
+            catch (Exception ex)
+            {
+                toggle.IsChecked = !toggle.IsChecked;
+                MessageBox.Show("Impossible de mettre à jour le statut : " + ex.Message,
+                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            var loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
+        }
+    }
+}

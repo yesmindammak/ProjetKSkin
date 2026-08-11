@@ -1,0 +1,116 @@
+[
+  {
+    "ContainingType": "LoginRegisterApp.PortailApi.Controllers.ContactsController",
+    "Method": "GetByPhone",
+    "RelativePath": "api/contacts/by-phone",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "telephone",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LoginRegisterApp.PortailApi.Controllers.DemandesController",
+    "Method": "CreerDemande",
+    "RelativePath": "api/demandes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "LoginRegisterApp.PortailApi.Dtos.CreerDemandeRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LoginRegisterApp.PortailApi.Controllers.PointsDeVenteController",
+    "Method": "GetPointsDeVente",
+    "RelativePath": "api/points-de-vente",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LoginRegisterApp.PortailApi.Controllers.ProduitsController",
+    "Method": "GetProduits",
+    "RelativePath": "api/produits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "marque",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "categorie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "q",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LoginRegisterApp.PortailApi.Controllers.ProduitsController",
+    "Method": "GetById",
+    "RelativePath": "api/produits/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LoginRegisterApp.PortailApi.Controllers.ProduitsController",
+    "Method": "GetCategories",
+    "RelativePath": "api/produits/categories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LoginRegisterApp.PortailApi.Controllers.ProduitsController",
+    "Method": "GetMarques",
+    "RelativePath": "api/produits/marques",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LoginRegisterApp.PortailApi.Controllers.ProduitsController",
+    "Method": "GetMarquesDetails",
+    "RelativePath": "api/produits/marques-details",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

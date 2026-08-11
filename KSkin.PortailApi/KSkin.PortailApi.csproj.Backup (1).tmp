@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>LoginRegisterApp.PortailApi</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net8.0\KSkin.PortailApi.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net8.0\KSkin.PortailApi.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="obj\Debug\net8.0\rpswa.dswa.cache.json" />
+    <Content Include="obj\Debug\net8.0\staticwebassets.removed.txt" />
+    <Content Include="obj\KSkin.PortailApi.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="KSkin.PortailApi.csproj" />
+    <None Include="obj\Debug\net8.0\KSkin.PortailApi.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net8.0\KSkin.PortailApi.assets.cache" />
+    <None Include="obj\Debug\net8.0\KSkin.PortailApi.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net8.0\KSkin.PortailApi.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\KSkin.PortailApi.csproj.nuget.g.props" />
+    <None Include="obj\KSkin.PortailApi.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net8.0\" />
+    <Folder Include="obj\Debug\net8.0\refint\" />
+    <Folder Include="obj\Debug\net8.0\ref\" />
+    <Folder Include="obj\Debug\net8.0\staticwebassets\" />
+  </ItemGroup>
+
+  <!--
+    This API reuses the same Data/, Models/ and Helpers/ classes as the
+    LoginRegisterApp desktop project (UserRepository, ProduitRepository,
+    ContactRepository, DemandeAchatRepository, NotificationService...) so
+    that the portal writes through the exact same logic and tables.
+
+    Simplest setup: copy the Data/, Models/, Helpers/ and Services/ folders
+    from the desktop project into this project (they're plain C#, no WPF
+    dependency). Alternatively, pull them into a shared class library that
+    both LoginRegisterApp and KSkin.PortailApi reference - do that if you'd
+    rather not maintain two copies.
+  -->
+
+</Project>

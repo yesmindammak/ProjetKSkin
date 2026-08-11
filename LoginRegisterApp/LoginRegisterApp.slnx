@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../KSkin.PortailApi/KSkin.PortailApi.csproj" Id="a4ea4144-0b43-48ea-9926-6025ebf45725" />
+  <Project Path="LoginRegisterApp.csproj" />
+</Solution>

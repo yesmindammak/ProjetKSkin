@@ -1,0 +1,165 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ============================================================ -->
+    <!-- COLOR PALETTE                                                 -->
+    <!-- Warm, skincare-inspired palette: terracotta + cream + plum.   -->
+    <!-- Swap these hex values if you want to nudge the mood later --  -->
+    <!-- every style below references these keys, not raw hex codes,  -->
+    <!-- so changing a color here re-themes the whole app.             -->
+    <!-- ============================================================ -->
+    <SolidColorBrush x:Key="BackgroundBrush"   Color="#FBF3EA"/> <!-- warm cream page background -->
+    <SolidColorBrush x:Key="CardBrush"         Color="#FFFFFF"/> <!-- white content cards -->
+    <SolidColorBrush x:Key="BlushBrush"        Color="#F3DED2"/> <!-- soft blush for hover / alt rows -->
+    <SolidColorBrush x:Key="SidebarBrush"      Color="#3E2723"/> <!-- deep espresso sidebar -->
+    <SolidColorBrush x:Key="SidebarHoverBrush" Color="#54332E"/> <!-- lighter espresso on hover -->
+    <SolidColorBrush x:Key="PrimaryBrush"      Color="#C1694F"/> <!-- terracotta - primary actions -->
+    <SolidColorBrush x:Key="PrimaryDarkBrush"  Color="#8C4A36"/> <!-- pressed/hover state of terracotta -->
+    <SolidColorBrush x:Key="AccentGoldBrush"   Color="#D4A857"/> <!-- gold accent - admin badge, highlights -->
+    <SolidColorBrush x:Key="DangerBrush"       Color="#B23A2E"/> <!-- errors / logout -->
+    <SolidColorBrush x:Key="TextDarkBrush"     Color="#3B2E2A"/> <!-- main text -->
+    <SolidColorBrush x:Key="TextMutedBrush"    Color="#8A7266"/> <!-- secondary / muted text -->
+    <SolidColorBrush x:Key="TextOnDarkBrush"   Color="#F3DED2"/> <!-- text sitting on the dark sidebar -->
+
+    <!-- ============================================================ -->
+    <!-- SIDEBAR NAV BUTTON                                            -->
+    <!-- Transparent by default, blush highlight on hover, terracotta -->
+    <!-- left bar + tint when the tab is the active one (IsChecked).  -->
+    <!-- Use as a ToggleButton so only one tab reads "selected".      -->
+    <!-- ============================================================ -->
+    <Style x:Key="SidebarNavButtonStyle" TargetType="ToggleButton">
+        <Setter Property="Foreground" Value="{StaticResource TextOnDarkBrush}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="18,12"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="Bg" Background="Transparent" CornerRadius="8" Margin="10,3">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="ActiveBar" Grid.Column="0" Background="{StaticResource PrimaryBrush}"
+                                    CornerRadius="2" Opacity="0" Margin="0,4"/>
+                            <ContentPresenter Grid.Column="1" VerticalAlignment="Center"
+                                               Margin="{TemplateBinding Padding}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bg" Property="Background" Value="{StaticResource SidebarHoverBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Bg" Property="Background" Value="{StaticResource SidebarHoverBrush}"/>
+                            <Setter TargetName="ActiveBar" Property="Opacity" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!-- PRIMARY BUTTON (terracotta, rounded)                          -->
+    <!-- ============================================================ -->
+    <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Padding" Value="18,10"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Bg" Background="{TemplateBinding Background}" CornerRadius="8">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Margin="{TemplateBinding Padding}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bg" Property="Background" Value="{StaticResource PrimaryDarkBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Bg" Property="Opacity" Value="0.85"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Outline variant - used for secondary actions like "Log out" -->
+    <Style x:Key="OutlineButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource TextOnDarkBrush}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Padding" Value="14,8"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Bg" Background="{TemplateBinding Background}"
+                            BorderBrush="{StaticResource TextOnDarkBrush}" BorderThickness="1" CornerRadius="8">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Margin="{TemplateBinding Padding}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bg" Property="Background" Value="{StaticResource DangerBrush}"/>
+                            <Setter TargetName="Bg" Property="BorderBrush" Value="{StaticResource DangerBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!-- DASHBOARD STAT CARD                                           -->
+    <!-- ============================================================ -->
+    <Style x:Key="StatCardStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource CardBrush}"/>
+        <Setter Property="CornerRadius" Value="14"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Margin" Value="0,0,16,16"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="#3B2E2A" Opacity="0.08" BlurRadius="14" ShadowDepth="3"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!-- DATA GRID (used by the admin "Manage users" panel)            -->
+    <!-- ============================================================ -->
+    <Style x:Key="ThemedDataGridStyle" TargetType="DataGrid">
+        <Setter Property="Background" Value="{StaticResource CardBrush}"/>
+        <Setter Property="RowBackground" Value="{StaticResource CardBrush}"/>
+        <Setter Property="AlternatingRowBackground" Value="{StaticResource BlushBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="GridLinesVisibility" Value="None"/>
+        <Setter Property="RowHeight" Value="38"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{StaticResource TextDarkBrush}"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="ColumnHeaderHeight" Value="40"/>
+    </Style>
+
+    <Style TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Padding" Value="10,0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    </Style>
+
+</ResourceDictionary>

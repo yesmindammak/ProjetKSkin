@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+	  <OutDir>C:\Users\Public\TestApp\</OutDir>
+    <RootNamespace>LoginRegisterApp</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Modern SQL Server client library (replaces old System.Data.SqlClient) -->
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Panels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LoginRegisterApp.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "..\\KSkin.PortailApi\\KSkin.PortailApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "LoginRegisterApp.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

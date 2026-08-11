@@ -1,0 +1,15 @@
+<Application x:Class="LoginRegisterApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="Views/LoginWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Merged once, here, so it's loaded before ANY window (including its own
+                     root-element attributes) gets parsed. This is what fixes the
+                     "Cannot find resource named 'BackgroundBrush'" crash. -->
+                <ResourceDictionary Source="Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

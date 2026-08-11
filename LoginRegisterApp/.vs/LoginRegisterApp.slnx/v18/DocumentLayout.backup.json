@@ -1,0 +1,231 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\LoginRegisterApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{262F7976-4DBC-4EAF-67BB-61D3F563573A}|LoginRegisterApp.csproj|d:\\loginregisterapp\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262F7976-4DBC-4EAF-67BB-61D3F563573A}|LoginRegisterApp.csproj|solutionrelative:views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262F7976-4DBC-4EAF-67BB-61D3F563573A}|LoginRegisterApp.csproj|d:\\loginregisterapp\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{262F7976-4DBC-4EAF-67BB-61D3F563573A}|LoginRegisterApp.csproj|solutionrelative:views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262F7976-4DBC-4EAF-67BB-61D3F563573A}|LoginRegisterApp.csproj|d:\\loginregisterapp\\models\\demandeachatdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262F7976-4DBC-4EAF-67BB-61D3F563573A}|LoginRegisterApp.csproj|solutionrelative:models\\demandeachatdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4EA4144-0B43-48EA-9926-6025EBF45725}|..\\KSkin.PortailApi\\KSkin.PortailApi.csproj|d:\\kskin.portailapi\\data\\demandeachatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4EA4144-0B43-48EA-9926-6025EBF45725}|..\\KSkin.PortailApi\\KSkin.PortailApi.csproj|d:\\kskin.portailapi\\models\\demandeachatdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4EA4144-0B43-48EA-9926-6025EBF45725}|..\\KSkin.PortailApi\\KSkin.PortailApi.csproj|d:\\kskin.portailapi\\dtos\\demandedtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4EA4144-0B43-48EA-9926-6025EBF45725}|..\\KSkin.PortailApi\\KSkin.PortailApi.csproj|d:\\kskin.portailapi\\controllers\\demandescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4EA4144-0B43-48EA-9926-6025EBF45725}|..\\KSkin.PortailApi\\KSkin.PortailApi.csproj|d:\\kskin.portailapi\\data\\pointdeventerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4EA4144-0B43-48EA-9926-6025EBF45725}|..\\KSkin.PortailApi\\KSkin.PortailApi.csproj|d:\\kskin.portailapi\\data\\stockexternerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4EA4144-0B43-48EA-9926-6025EBF45725}|..\\KSkin.PortailApi\\KSkin.PortailApi.csproj|d:\\kskin.portailapi\\data\\notificationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4EA4144-0B43-48EA-9926-6025EBF45725}|..\\KSkin.PortailApi\\KSkin.PortailApi.csproj|d:\\kskin.portailapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262F7976-4DBC-4EAF-67BB-61D3F563573A}|LoginRegisterApp.csproj|d:\\loginregisterapp\\helpers\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262F7976-4DBC-4EAF-67BB-61D3F563573A}|LoginRegisterApp.csproj|solutionrelative:helpers\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4EA4144-0B43-48EA-9926-6025EBF45725}|..\\KSkin.PortailApi\\KSkin.PortailApi.csproj|d:\\kskin.portailapi\\controllers\\contactscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\LoginRegisterApp\\Views\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\LoginRegisterApp\\Views\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Views\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAASwFgAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T13:32:40.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DemandeAchatDisplay.cs",
+              "DocumentMoniker": "D:\\LoginRegisterApp\\Models\\DemandeAchatDisplay.cs",
+              "RelativeDocumentMoniker": "Models\\DemandeAchatDisplay.cs",
+              "ToolTip": "D:\\LoginRegisterApp\\Models\\DemandeAchatDisplay.cs",
+              "RelativeToolTip": "Models\\DemandeAchatDisplay.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAABAAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T13:21:13.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\LoginRegisterApp\\Views\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\MainWindow.xaml",
+              "ToolTip": "D:\\LoginRegisterApp\\Views\\MainWindow.xaml",
+              "RelativeToolTip": "Views\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-10T12:54:28.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DemandeDtos.cs",
+              "DocumentMoniker": "D:\\KSkin.PortailApi\\Dtos\\DemandeDtos.cs",
+              "RelativeDocumentMoniker": "..\\KSkin.PortailApi\\Dtos\\DemandeDtos.cs",
+              "ToolTip": "D:\\KSkin.PortailApi\\Dtos\\DemandeDtos.cs",
+              "RelativeToolTip": "..\\KSkin.PortailApi\\Dtos\\DemandeDtos.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAADgvzEAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T12:54:08.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DemandeAchatDisplay.cs",
+              "DocumentMoniker": "D:\\KSkin.PortailApi\\Models\\DemandeAchatDisplay.cs",
+              "RelativeDocumentMoniker": "..\\KSkin.PortailApi\\Models\\DemandeAchatDisplay.cs",
+              "ToolTip": "D:\\KSkin.PortailApi\\Models\\DemandeAchatDisplay.cs",
+              "RelativeToolTip": "..\\KSkin.PortailApi\\Models\\DemandeAchatDisplay.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAABAAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T12:53:55.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DemandeAchatRepository.cs",
+              "DocumentMoniker": "D:\\KSkin.PortailApi\\Data\\DemandeAchatRepository.cs",
+              "RelativeDocumentMoniker": "..\\KSkin.PortailApi\\Data\\DemandeAchatRepository.cs",
+              "ToolTip": "D:\\KSkin.PortailApi\\Data\\DemandeAchatRepository.cs",
+              "RelativeToolTip": "..\\KSkin.PortailApi\\Data\\DemandeAchatRepository.cs",
+              "ViewState": "AgIAAOIAAAAAAAAAAAAAAKIAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T10:56:40.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DemandesController.cs",
+              "DocumentMoniker": "D:\\KSkin.PortailApi\\Controllers\\DemandesController.cs",
+              "RelativeDocumentMoniker": "..\\KSkin.PortailApi\\Controllers\\DemandesController.cs",
+              "ToolTip": "D:\\KSkin.PortailApi\\Controllers\\DemandesController.cs",
+              "RelativeToolTip": "..\\KSkin.PortailApi\\Controllers\\DemandesController.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAhwCIAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T12:54:11.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "StockExterneRepository.cs",
+              "DocumentMoniker": "D:\\KSkin.PortailApi\\Data\\StockExterneRepository.cs",
+              "RelativeDocumentMoniker": "..\\KSkin.PortailApi\\Data\\StockExterneRepository.cs",
+              "ToolTip": "D:\\KSkin.PortailApi\\Data\\StockExterneRepository.cs",
+              "RelativeToolTip": "..\\KSkin.PortailApi\\Data\\StockExterneRepository.cs",
+              "ViewState": "AgIAALwAAAAAAAAAAAAhwMgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T12:54:15.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PointDeVenteRepository.cs",
+              "DocumentMoniker": "D:\\KSkin.PortailApi\\Data\\PointDeVenteRepository.cs",
+              "RelativeDocumentMoniker": "..\\KSkin.PortailApi\\Data\\PointDeVenteRepository.cs",
+              "ToolTip": "D:\\KSkin.PortailApi\\Data\\PointDeVenteRepository.cs",
+              "RelativeToolTip": "..\\KSkin.PortailApi\\Data\\PointDeVenteRepository.cs",
+              "ViewState": "AgIAANwAAAAAAAAAAAASwOMAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T12:54:14.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "NotificationRepository.cs",
+              "DocumentMoniker": "D:\\KSkin.PortailApi\\Data\\NotificationRepository.cs",
+              "RelativeDocumentMoniker": "..\\KSkin.PortailApi\\Data\\NotificationRepository.cs",
+              "ToolTip": "D:\\KSkin.PortailApi\\Data\\NotificationRepository.cs",
+              "RelativeToolTip": "..\\KSkin.PortailApi\\Data\\NotificationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T11:00:38.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PasswordHelper.cs",
+              "DocumentMoniker": "D:\\LoginRegisterApp\\Helpers\\PasswordHelper.cs",
+              "RelativeDocumentMoniker": "Helpers\\PasswordHelper.cs",
+              "ToolTip": "D:\\LoginRegisterApp\\Helpers\\PasswordHelper.cs",
+              "RelativeToolTip": "Helpers\\PasswordHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T10:54:46.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ContactsController.cs",
+              "DocumentMoniker": "D:\\KSkin.PortailApi\\Controllers\\ContactsController.cs",
+              "RelativeDocumentMoniker": "..\\KSkin.PortailApi\\Controllers\\ContactsController.cs",
+              "ToolTip": "D:\\KSkin.PortailApi\\Controllers\\ContactsController.cs",
+              "RelativeToolTip": "..\\KSkin.PortailApi\\Controllers\\ContactsController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBAAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T09:21:28.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\KSkin.PortailApi\\appsettings.json",
+              "RelativeDocumentMoniker": "..\\KSkin.PortailApi\\appsettings.json",
+              "ToolTip": "D:\\KSkin.PortailApi\\appsettings.json",
+              "RelativeToolTip": "..\\KSkin.PortailApi\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-09T17:02:28.282Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
