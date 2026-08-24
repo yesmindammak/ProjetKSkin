@@ -105,7 +105,7 @@ namespace LoginRegisterApp.Data
         public static List<int> GetSuperviseurAchatUserIds()
         {
             using SqlConnection connection = DatabaseHelper.GetConnection();
-            const string query = "SELECT UserId FROM Users WHERE Role = 'SuperviseurAchat' AND StatutActivation = 'Actif'";
+            const string query = "SELECT UserId FROM Users WHERE (Role = 'SuperviseurAchat' OR Role LIKE '%Superviseur%' OR Role = 'Admin') AND LOWER(StatutActivation) = 'actif'";
             using var command = new SqlCommand(query, connection);
             using SqlDataReader reader = command.ExecuteReader();
 
@@ -133,7 +133,7 @@ namespace LoginRegisterApp.Data
         public static List<int> GetActiveUserIds()
         {
             using SqlConnection connection = DatabaseHelper.GetConnection();
-            const string query = "SELECT UserId FROM Users WHERE StatutActivation = 'Actif'";
+            const string query = "SELECT UserId FROM Users WHERE LOWER(StatutActivation) = 'actif'";
             using var command = new SqlCommand(query, connection);
             using SqlDataReader reader = command.ExecuteReader();
 

@@ -24,7 +24,9 @@ namespace LoginRegisterApp.Models
         public decimal ProduitPrix { get; set; }
         public decimal TotalPrix => ProduitPrix * Quantite;
 
-        public bool CanBeValidatedOrRefused => string.Equals(Statut, "EnAttente", StringComparison.OrdinalIgnoreCase) || string.Equals(Statut, "EnAttenteValidation", StringComparison.OrdinalIgnoreCase);
-        public bool CanBeClosed => string.Equals(Statut, "Validee", StringComparison.OrdinalIgnoreCase) || string.Equals(Statut, "EnAttente", StringComparison.OrdinalIgnoreCase) || string.Equals(Statut, "EnAttenteValidation", StringComparison.OrdinalIgnoreCase);
+        public bool IsPending => string.Equals(Statut, "EnAttente", StringComparison.OrdinalIgnoreCase) || string.Equals(Statut, "EnAttenteValidation", StringComparison.OrdinalIgnoreCase);
+        public bool CanSuperviseurValidateOrRefuse { get; set; }
+        public bool CanCommercialClose { get; set; }
+        public bool CanCommercialMarkPerdu { get; set; }
     }
 }

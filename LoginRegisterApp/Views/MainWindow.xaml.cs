@@ -117,6 +117,7 @@ namespace LoginRegisterApp
                     DashboardNotifText.Text = $"{notifications[0].Objet} : {notifications[0].Contenu}";
                 }
 
+                LoadNotifications();
                 LoadMarquesShowcase();
                 ApplyProductFilters();
             }
@@ -394,9 +395,26 @@ namespace LoginRegisterApp
         {
             try
             {
-                var list = (_role == "SuperviseurAchat" || _role == "Admin")
+                bool isSuperviseurOrAdmin = string.Equals(_role, "Admin", StringComparison.OrdinalIgnoreCase) ||
+                                            string.Equals(_role, "SuperviseurAchat", StringComparison.OrdinalIgnoreCase) ||
+                                            (!string.IsNullOrEmpty(_role) && _role.Contains("Superviseur", StringComparison.OrdinalIgnoreCase));
+                bool isCommercial = !isSuperviseurOrAdmin;
+
+                var list = isSuperviseurOrAdmin
                     ? DemandeAchatRepository.GetAllDisplay()
                     : DemandeAchatRepository.GetAllDisplayForUserAndPortal(_currentUserId);
+
+                foreach (var d in list)
+                {
+                    // Superviseur d'achat ONLY: Valider & Refuser (NEVER Clôturer or Perdu)
+                    d.CanSuperviseurValidateOrRefuse = isSuperviseurOrAdmin && d.IsPending;
+
+                    // Commercial User ONLY: Clôturer & Perdu (NEVER for Superviseur or Admin)
+                    d.CanCommercialClose = isCommercial && (string.Equals(d.Statut, "Validee", StringComparison.OrdinalIgnoreCase) || d.IsPending);
+                    d.CanCommercialMarkPerdu = isCommercial && !string.Equals(d.Statut, "Cloturee", StringComparison.OrdinalIgnoreCase)
+                                                            && !string.Equals(d.Statut, "Perdue", StringComparison.OrdinalIgnoreCase)
+                                                            && !string.Equals(d.Statut, "Refusee", StringComparison.OrdinalIgnoreCase);
+                }
 
                 DemandesGrid.ItemsSource = list;
             }
@@ -749,18 +767,67 @@ namespace LoginRegisterApp
             }
         }
 
+        private void PerduDemande_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is int demandeId)
+            {
+                try
+                {
+                    DemandeAchatRepository.SetStatut(demandeId, "Perdue");
+                    LoadDemandes();
+                    LoadDashboardStats();
+                    MessageBox.Show("La demande d'achat a été marquée comme 'Perdue'.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur : " + ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
         // ==================== NOTIFICATIONS ====================
+
+        private void NavNotifications_Click(object sender, RoutedEventArgs e)
+        {
+            LoadNotifications();
+            NotifPopup.IsOpen = !NotifPopup.IsOpen;
+        }
 
         private void LoadNotifications()
         {
             try
             {
-                var notifs = NotificationRepository.GetForUserDisplay(_currentUserId);
-                NotificationsGrid.ItemsSource = notifs;
+                var allNotifs = NotificationRepository.GetForUserDisplay(_currentUserId);
+
+                // 1) Pop-up dropdown ONLY shows UNREAD notifications (disappears when marked read!)
+                var unreadNotifs = allNotifs.Where(n => !n.Lu).ToList();
+                PopupNotifsItemsControl.ItemsSource = unreadNotifs;
+
+                // 2) Unread badge counter
+                UpdateUnreadNotifBadge(unreadNotifs.Count);
+
+                // 3) Persistent Table View in Notifications Panel retains ALL notifications (read & unread)!
+                if (NotificationsGrid != null)
+                {
+                    NotificationsGrid.ItemsSource = allNotifs;
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Erreur lors du chargement des notifications : " + ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                // Silently handle startup notification check
+            }
+        }
+
+        private void UpdateUnreadNotifBadge(int unreadCount)
+        {
+            if (unreadCount > 0)
+            {
+                UnreadNotifCountText.Text = unreadCount.ToString();
+                UnreadNotifBadge.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                UnreadNotifBadge.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -772,12 +839,28 @@ namespace LoginRegisterApp
                 {
                     NotificationRepository.MarkAsRead(notifId);
                     LoadNotifications();
-                    MessageBox.Show("La notification a été marquée comme lue avec succès !", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erreur : " + ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            }
+        }
+
+        private void MarkAllNotifsRead_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var notifs = NotificationRepository.GetForUserDisplay(_currentUserId);
+                foreach (var n in notifs)
+                {
+                    if (!n.Lu) NotificationRepository.MarkAsRead(n.NotificationId);
+                }
+                LoadNotifications();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : " + ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

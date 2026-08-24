@@ -61,8 +61,8 @@ namespace LoginRegisterApp.Services
                     expediteur: nomUtilisateur,
                     destinataireUserId: superviseurId,
                     destinataireContactId: null,
-                    objet: "Nouvelle demande d'achat",
-                    contenu: $"{nomUtilisateur} a créé une demande d'achat (quantité : {demande.Quantite}).");
+                    objet: "Nouvelle demande d'achat créée",
+                    contenu: $"L'utilisateur commercial '{nomUtilisateur}' a créé une demande d'achat pour le produit #{demande.ProduitId} (quantité : {demande.Quantite}).");
             }
         }
 
@@ -87,10 +87,11 @@ namespace LoginRegisterApp.Services
             }
         }
 
-        // 6) Nouveau produit (pas juste un changement de stock) : notifie tous les utilisateurs actifs.
+        // 6) Nouveau produit (pas juste un changement de stock) : notifie tous les utilisateurs actifs (y compris superviseurs).
         public static void NotifierNouveauProduit(Produit produit)
         {
-            foreach (int userId in UserRepository.GetActiveUserIds())
+            var activeUserIds = UserRepository.GetActiveUserIds();
+            foreach (int userId in activeUserIds)
             {
                 NotificationRepository.Create(
                     expediteur: "Système",
